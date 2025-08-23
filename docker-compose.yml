@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+  meal-back:
+    container_name: meal-back
+    build:
+      context: ./Backend
+    ports:
+      - 3000:3000
+    environment:
+      - POSTGRES_DB=mealplan
+      - POSTGRES_USER=superuser
+      - POSTGRES_PASSWORD=super
+      - DB_HOST=db
+      - DB_PORT=5432
+    tty: true
+
+  meal-front:
+    container_name: meal-front
+    build:
+      context: ./Frontend
+      target: production
+      args:
+        - VITE_API_SERVER=/api
+    ports:
+      - 5173:80
+    tty: true
+    depends_on:
+      - db
+      - meal-back
+
+  db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=mealplan
+      - POSTGRES_USER=superuser
+      - POSTGRES_PASSWORD=super
+    volumes:
+      - db-storage:/var/lib/postgresql/data
+      - ./db/initdb:/docker-entrypoint-initdb.d
+
+volumes:
+  db-storage:
