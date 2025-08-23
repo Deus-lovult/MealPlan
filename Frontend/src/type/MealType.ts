@@ -1,0 +1,25 @@
+export type MealType = {
+  id: number;
+  date: string;
+  breakfastmealno1: string;
+  breakfastmealno2: string;
+  breakfastmealno3: string;
+  breakfastmealno4: string;
+  breakfastmealno5: string;
+  breakfastmealno6: string;
+  breakfastmealno7: string;
+  lunchmealno1: string;
+  lunchmealno2: string;
+  lunchmealno3: string;
+  lunchmealno4: string;
+  lunchmealno5: string;
+  lunchmealno6: string;
+  lunchmealno7: string;
+  dinnermealno1: string;
+  dinnermealno2: string;
+  dinnermealno3: string;
+  dinnermealno4: string;
+  dinnermealno5: string;
+  dinnermealno6: string;
+  dinnermealno7: string;
+};

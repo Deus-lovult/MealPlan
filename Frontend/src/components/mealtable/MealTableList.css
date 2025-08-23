@@ -1,0 +1,23 @@
+.tableHeader {
+  text-align: center;
+  font-size: 24px;
+}
+
+.headerSticky {
+  position: sticky;
+  top: 0;
+}
+.headerSticky::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  background-color: white;
+  z-index: -1;
+}
+
+.bodyText {
+  text-align: center;
+  font-size: 24px;
+}

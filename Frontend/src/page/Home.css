@@ -1,0 +1,11 @@
+/*全体的なコンテイナー*/
+.container {
+  width: 100%;
+  padding: 4px;
+}
+
+/*年月文字列*/
+.nowYearMonth {
+  text-align: center;
+  font-size: 44px;
+}
