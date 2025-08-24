@@ -87,8 +87,23 @@ router.put("/:id/putComplete", async (req, res) => {
   }
 });
 
+//todo取得(完了)
+router.get("/getComplete", async (req, res) => {
+  try {
+    //SQL文作成
+    const text =
+      "SELECT * FROM todotable WHERE completeflg = '1' AND deleteflg = false";
+    //SQL実行
+    const result = await pgPool.query(text);
+
+    return res.status(200).json(result.rows);
+  } catch (e) {
+    return res.status(500).json({ stack: e.stack, error: e });
+  }
+});
+
 //todo更新(削除)
-router.put("/:id/putContent", async (req, res) => {
+router.put("/:id/delete", async (req, res) => {
   try {
     //パラメータ取得
     const data = req.body;
@@ -117,7 +132,6 @@ router.put("/:id/putContent", async (req, res) => {
 
 //todo取得
 router.get("/get", async (req, res) => {
-  let client;
   try {
     //SQL文作成
     const text =
