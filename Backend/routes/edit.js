@@ -3,7 +3,6 @@ const { query, pgPool } = require("../dbconnection");
 
 //対象取得
 router.get("/getEditTarget", async (req, res) => {
-  let client;
   try {
     //パラメータ取得
     const editTargetDate = req.query.targetDate;
@@ -23,7 +22,6 @@ router.get("/getEditTarget", async (req, res) => {
 
 //新規作成
 router.post("/post", async (req, res) => {
-  let client;
   try {
     //データ取得
     const data = req.body;
@@ -74,7 +72,6 @@ router.post("/post", async (req, res) => {
 
 //更新
 router.put("/:id/put", async (req, res) => {
-  let client;
   try {
     //パラメータ取得
     const param = req.params.id;

@@ -3,7 +3,6 @@ const { pgPool } = require("../dbconnection");
 
 //todo新規作成
 router.post("/post", async (req, res) => {
-  let client;
   try {
     //パラメータ取得
     const data = req.body;
@@ -34,7 +33,6 @@ router.post("/post", async (req, res) => {
 
 //todo更新(内容更新)
 router.put("/:id/putContent", async (req, res) => {
-  let client;
   try {
     //パラメータ取得
     const data = req.body;
@@ -63,7 +61,6 @@ router.put("/:id/putContent", async (req, res) => {
 
 //todo更新(完了)
 router.put("/:id/putComplete", async (req, res) => {
-  let client;
   try {
     //パラメータ取得
     const data = req.body;
@@ -92,7 +89,6 @@ router.put("/:id/putComplete", async (req, res) => {
 
 //todo更新(削除)
 router.put("/:id/putContent", async (req, res) => {
-  let client;
   try {
     //パラメータ取得
     const data = req.body;

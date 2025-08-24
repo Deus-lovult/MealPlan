@@ -3,8 +3,6 @@ const { pgPool } = require("../dbconnection");
 
 //日付間の全件データを取得する
 router.get("/getWeekMeals", async (req, res) => {
-  let client;
-
   try {
     //パラメータ取得
     const startDate = req.query.startDate;
