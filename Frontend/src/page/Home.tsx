@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Alert, Button } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
 import { MealTableList } from "../components/mealtable/MealTableList";
@@ -26,6 +26,7 @@ export const Home = () => {
 
   const [date, setDate] = useState<string>(thisDate);
   const [startDate, setStartDate] = useState<string>(thisDate);
+  const [resultFlg, setResultFlg] = useState<boolean>(false);
 
   //選択した日の週の日曜日，土曜日を取得
   const StartAndEndOfThisWeek = (strDate: string) => {
@@ -86,8 +87,12 @@ export const Home = () => {
           },
         })
         .then((result) => {
-          console.log(result.data);
           setMeals(result.data.data);
+
+          //0件の時はtrueを設定
+          if (result.data.data.length === 0) {
+            setResultFlg(true);
+          }
         })
         .catch((e) => {
           console.error(e);
@@ -101,6 +106,12 @@ export const Home = () => {
     <>
       <Navbar />
       <div className="container">
+        {meals && resultFlg && (
+          <Alert.Root status="info" mb="5px">
+            <Alert.Indicator />
+            <Alert.Title>対象データが存在しませんでした</Alert.Title>
+          </Alert.Root>
+        )}
         <input
           type="date"
           className="nowYearMonth"
@@ -111,7 +122,6 @@ export const Home = () => {
         />
         <Button onClick={onSearch}>検索</Button>
       </div>
-
       <MealTableList mealTableList={meals} startDate={startDate} />
     </>
   );

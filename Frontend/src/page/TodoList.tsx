@@ -18,6 +18,7 @@ import type { TaskType } from "../type/TaskType";
 type ErrorType = {
   hasAddError: boolean;
   hasEditError: boolean;
+  errorTitle: string;
   errorMsg: string;
 };
 
@@ -90,6 +91,7 @@ export const TodoList = () => {
         const error: ErrorType = {
           hasAddError: true,
           hasEditError: false,
+          errorTitle: "無効なフィールド値",
           errorMsg: "空白のみの追加はできません",
         };
 
@@ -136,6 +138,7 @@ export const TodoList = () => {
         const error: ErrorType = {
           hasAddError: false,
           hasEditError: true,
+          errorTitle: "無効なフィールド値",
           errorMsg: "空白のみの追加はできません",
         };
 
@@ -178,6 +181,18 @@ export const TodoList = () => {
     <>
       <Navbar />
       <Container mt={15}>
+        {errorInfo && (errorInfo.hasEditError || errorInfo.hasAddError) && (
+          <>
+            <Alert.Root status="error" mb={5}>
+              <Alert.Indicator />
+              <Alert.Content>
+                <Alert.Title>{errorInfo.errorTitle}</Alert.Title>
+                <Alert.Description>{errorInfo.errorMsg}</Alert.Description>
+              </Alert.Content>
+            </Alert.Root>
+          </>
+        )}
+
         <div>
           <div>
             <Text textAlign="center" textStyle="4xl" mb={5}>
@@ -190,11 +205,6 @@ export const TodoList = () => {
                 invalid={(errorInfo && errorInfo.hasAddError) || false}
               >
                 <Input ref={inputRef} />
-                {errorInfo && errorInfo.hasAddError && (
-                  <>
-                    <Field.ErrorText>{errorInfo.errorMsg}</Field.ErrorText>
-                  </>
-                )}
               </Field.Root>
               <Button onClick={onClickAdd} ml={4}>
                 追加
@@ -207,17 +217,6 @@ export const TodoList = () => {
             未完了
           </Text>
           <div>
-            {errorInfo && errorInfo.hasEditError && (
-              <>
-                <Alert.Root status="error" mb={5}>
-                  <Alert.Indicator />
-                  <Alert.Content>
-                    <Alert.Title>無効なフィールド値</Alert.Title>
-                    <Alert.Description>{errorInfo.errorMsg}</Alert.Description>
-                  </Alert.Content>
-                </Alert.Root>
-              </>
-            )}
             <List.Root unstyled={true} minH="40vh">
               {task &&
                 task.map((value, index) => {
