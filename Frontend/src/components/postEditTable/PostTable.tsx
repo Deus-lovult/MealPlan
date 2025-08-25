@@ -61,17 +61,21 @@ export const PostTable = () => {
   };
 
   return (
-    <>
-      <Table.Root>
+    <div>
+      <Table.Root w="80%" m="0 auto">
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeader></Table.ColumnHeader>
-            <Table.ColumnHeader>{formatDate(meal.date)}</Table.ColumnHeader>
+            <Table.ColumnHeader fontSize="40px" textAlign="center">
+              {formatDate(meal.date)}
+            </Table.ColumnHeader>
           </Table.Row>
         </Table.Header>
         <Table.Body>
           <Table.Row>
-            <Table.Cell rowSpan={7}>朝</Table.Cell>
+            <Table.Cell rowSpan={7} fontSize="40px" textAlign="center">
+              朝
+            </Table.Cell>
             <Table.Cell>
               <Input
                 variant="outline"
@@ -142,7 +146,9 @@ export const PostTable = () => {
             </Table.Cell>
           </Table.Row>
           <Table.Row>
-            <Table.Cell rowSpan={7}>昼</Table.Cell>
+            <Table.Cell rowSpan={7} fontSize="40px" textAlign="center">
+              昼
+            </Table.Cell>
             <Table.Cell>
               <Input
                 variant="outline"
@@ -213,7 +219,9 @@ export const PostTable = () => {
             </Table.Cell>
           </Table.Row>
           <Table.Row>
-            <Table.Cell rowSpan={7}>夕</Table.Cell>
+            <Table.Cell rowSpan={7} fontSize="40px" textAlign="center">
+              夕
+            </Table.Cell>
             <Table.Cell>
               <Input
                 variant="outline"
@@ -286,6 +294,6 @@ export const PostTable = () => {
         </Table.Body>
       </Table.Root>
       <Button onClick={onClickPost}>新規登録</Button>
-    </>
+    </div>
   );
 };

@@ -21,7 +21,7 @@ export const Navbar = memo(() => {
     navigate("/edit");
   }, [navigate]);
 
-  const onClicTodo = useCallback(() => {
+  const onClickTodo = useCallback(() => {
     setMeals([]);
     setDate("");
     navigate("/todo");
@@ -35,13 +35,31 @@ export const Navbar = memo(() => {
         {/*メニューボタン*/}
         <div className="menuContainer">
           <div className="menuBox">
-            <Button onClick={onClickHome}>メインメニュー</Button>
+            <Button
+              onClick={onClickHome}
+              css={{ "font-weight": "bold", "font-size": "22px" }}
+              _hover={{ color: "white" }}
+            >
+              メインメニュー
+            </Button>
           </div>
           <div className="menuBox">
-            <Button onClick={onClickEdit}>献立編集</Button>
+            <Button
+              onClick={onClickEdit}
+              css={{ "font-weight": "bold", "font-size": "22px" }}
+              _hover={{ color: "white" }}
+            >
+              献立編集
+            </Button>
           </div>
           <div className="menuBox">
-            <Button onClick={onClicTodo}>買い物リスト</Button>
+            <Button
+              onClick={onClickTodo}
+              css={{ "font-weight": "bold", "font-size": "22px" }}
+              _hover={{ color: "white" }}
+            >
+              買い物リスト
+            </Button>
           </div>
         </div>
       </nav>
